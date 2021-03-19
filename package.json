@@ -1,0 +1,25 @@
+{
+  "name": "uptasknodejs",
+  "version": "1.0.0",
+  "description": "Proyecto UpTask con Node MVC",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AcevedoAdrian/uptasknodejs.git"
+  },
+  "author": "Adrian Acevedo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AcevedoAdrian/uptasknodejs/issues"
+  },
+  "homepage": "https://github.com/AcevedoAdrian/uptasknodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
