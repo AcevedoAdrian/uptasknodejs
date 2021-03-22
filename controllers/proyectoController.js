@@ -4,7 +4,16 @@ exports.proyectosHome = (req, res ) =>{
         nombrePagina: 'Proyectos'
     });
 }
+exports.formularioProyecto = (req, res) =>{
+    res.render('nuevoProyecto', {
+        nombrePagina : 'Nuevo Poroyecto'
+    })
+}
 
+exports.nuevoProyecto = (req, res) =>{
+    //res.send('Holis')
+    console.log(req,);
+}
 // envia como response un html con el texto que esta dentro de las comillas  
 // exports.proyectosNosotros =  (req, res ) =>{
 //     res.send('Nosotros');
