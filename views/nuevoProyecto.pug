@@ -3,7 +3,13 @@ extends layout
 block contenido
      .contenido-principal
           h1= nombrePagina
-
+          //- si me pasan errores por parametros los muestro
+          if errores 
+               //- recorro el array de errores que recivo por parametro y los voy mostrardo en un div con la clase alerta 
+               each error in errores
+                    .alerta.error= error.texto
+                    
+               
           form.agregar-proyecto(action="/nuevo-proyecto" method="POST")
                .campo
                     label(for="nombre")  Nombre Proyecto 
