@@ -32,7 +32,9 @@ exports.nuevoProyecto = async (req, res) => {
   let errores = [];
 
   if (!nombre) {
-    errores.push({ texto: "Agrega un Nombre al Proyecto" });
+    errores.push({
+      texto: "Agrega un Nombre al Proyecto",
+    });
   }
 
   //   si hay errore
@@ -86,6 +88,8 @@ exports.formularioEditar = async (req, res) => {
       id: req.params.id,
     },
   });
+
+  // Usamos el promise.all para poder ejecutar todas las promesas juntas sin que tenga que esperar que finalice 1er para poder ejecutar la 2da. Con esto ejecuto los 2 a la ves
   const [proyectos, proyecto] = await Promise.all([
     proyectosPromise,
     proyectoPromise,
@@ -99,6 +103,51 @@ exports.formularioEditar = async (req, res) => {
   });
 };
 
+exports.actualizarProyecto = async (req, res) => {
+  const proyectos = await Proyectos.findAll();
+  //res.send('Holis')
+  // para acceder a lo que me llega por request
+  // console.log(req.body);
+
+  // validar que tengamos algo en el input
+  const { nombre } = req.body;
+
+  let errores = [];
+
+  if (!nombre) {
+    errores.push({
+      texto: "Agrega un Nombre al Proyecto",
+    });
+  }
+
+  //   si hay errore
+  if (errores.length > 0) {
+    res.render("nuevoProyecto", {
+      nombrePagina: "Nuevo Proyecto",
+      errores,
+      proyectos,
+    });
+  } else {
+    //  No hay errores
+    // insertar en la BD mediante la funcion create y returna un promisis
+    //   Proyectos.create({ nombre })
+    //     .then(() => console.log("Se Agregaron los datos"))
+    //     .catch((error) => console.log(erro));
+
+    // Actualizo el registro de la base de datos
+    await Proyectos.update(
+      {
+        nombre: nombre,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    );
+    res.redirect("/");
+  }
+};
 // envia como response un html con el texto que esta dentro de las comillas
 // exports.proyectosNosotros =  (req, res ) =>{
 //     res.send('Nosotros');

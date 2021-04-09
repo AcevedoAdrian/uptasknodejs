@@ -1,0 +1,10 @@
+//- Esto va a ejecutar dependiendo si el proyecto tiene o no algo, este archivo se puede conectar con otros archivos que lo llamen y recibe todos los parametros que le mandan al padre en este caso nos mandan proyecto.
+mixin crearProyecto(proyecto = {})
+     form.agregar-proyecto(action=`/nuevo-proyecto/${proyecto.id || ''}` method="POST")
+               .campo
+                    label(for="nombre")  Nombre Proyecto
+                    //- en value cargo los datos que recibo por parametros
+                    input#nombre(value=proyecto.nombre type="text" name="nombre" placeholder="nombre del proyecto")
+               .campo.enviar 
+                    input.boton(type="submit" value=`${proyecto.nombre ? 'Guardar': 'Agregar'}` )
+    

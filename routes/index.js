@@ -13,6 +13,7 @@ const {
   nuevoProyecto,
   proyectoPorUrl,
   formularioEditar,
+  actualizarProyecto
 } = require("../controllers/proyectoController");
 
 module.exports = function () {
@@ -34,6 +35,12 @@ module.exports = function () {
 
   // Actualizar el Proyecto
   router.get("/proyecto/editar/:id", formularioEditar);
+  router.post(
+    "/nuevo-proyecto/:id",
+    body("nombre").not().isEmpty().trim().escape(),
+    actualizarProyecto
+  );
+
 
   return router;
 };

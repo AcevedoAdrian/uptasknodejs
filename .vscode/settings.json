@@ -1,3 +1,4 @@
 {
-    "editor.fontSize": 15
+    "editor.fontSize": 15,
+    "compile-hero.disable-compile-files-on-did-save-code": false
 }
