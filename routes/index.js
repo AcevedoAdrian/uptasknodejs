@@ -13,7 +13,8 @@ const {
   nuevoProyecto,
   proyectoPorUrl,
   formularioEditar,
-  actualizarProyecto
+  actualizarProyecto,
+  eliminarProyecto
 } = require("../controllers/proyectoController");
 
 module.exports = function () {
@@ -41,6 +42,7 @@ module.exports = function () {
     actualizarProyecto
   );
 
-
+  // Eliminar un proyecto
+  router.delete('/proyectos/:url', eliminarProyecto )
   return router;
 };

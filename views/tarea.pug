@@ -11,4 +11,5 @@ block contenido
         //- Acciones que se pueden realizar 
         .contenedor-acciones
             a(href=`/proyecto/editar/${proyecto.id}` class="boton") Editar Proyecto
+            //- data-proyecto-url es un atributo personalizado
             button#eliminar-proyecto(data-proyecto-url=proyecto.url type="button" class="boton eliminar") Eliminar Proyecto

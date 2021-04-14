@@ -25,6 +25,7 @@ html(lang="en")
                                 li
                                     a(href=`/proyectos/${proyecto.url}`)= proyecto.nombre
             block contenido
+        script(src="/dist/bundle.js") 
 
             //- pre= vardump(proyectos)
         //- Creo un bloque para que puedan utilizar este master page

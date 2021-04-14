@@ -148,6 +148,26 @@ exports.actualizarProyecto = async (req, res) => {
     res.redirect("/");
   }
 };
+
+// Controlador para eliminar proyectos
+exports.eliminarProyecto = async (req, res, next) => {
+  // console.log(req._parsedUrl);muestra lo que nos mnadan por req
+  // req.params = hace referencia con el parametro que recibo desde el archivo drouter, es el nombre que le pongo despues del comodin /proyecto/:url'
+
+  // req.query = Esto lo recibo desde lo que me envian de la carpeta modulo del archivo proyecto.js como params  params: {urlProyecto} }
+  const { urlProyecto } = req.query;
+  // Con este metodo elimino el proyecto de la base de datos que me pasan por parametros
+  const resultado = await Proyectos.destroy({
+    where: {
+      url: urlProyecto,
+    },
+  });
+
+  if (!resultado) {
+    return next();
+  }
+  res.send("Proyecto Eliminado Correctamente");
+};
 // envia como response un html con el texto que esta dentro de las comillas
 // exports.proyectosNosotros =  (req, res ) =>{
 //     res.send('Nosotros');
