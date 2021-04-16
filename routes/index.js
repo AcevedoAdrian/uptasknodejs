@@ -16,6 +16,9 @@ const {
   actualizarProyecto,
   eliminarProyecto
 } = require("../controllers/proyectoController");
+const {
+  agregarTarea
+} = require("../controllers/tareasControllers")
 
 module.exports = function () {
   // configuro las rutas con los middelwaress
@@ -44,5 +47,11 @@ module.exports = function () {
 
   // Eliminar un proyecto
   router.delete('/proyectos/:url', eliminarProyecto )
+
+
+
+  // Tareas 
+  router.post('/proyectos/:url',agregarTarea)
+   
   return router;
 };

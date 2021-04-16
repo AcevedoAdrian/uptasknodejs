@@ -15,8 +15,9 @@ const helpers = require('./helpers');
 const db = require("./config/db");
 const { Router } = require('express');
 
-// exportamos el modelo
+// inportamos el modelo
 require("./models/Poyectos");
+require('./models/Tareas')
 
 
 db.sync()

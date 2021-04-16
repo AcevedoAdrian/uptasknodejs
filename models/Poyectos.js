@@ -1,16 +1,16 @@
-const Sequelize = require('sequelize');
+const {DataTypes} = require('sequelize');
 const db = require('../config/db');
 const slug = require('slug');
 const shortid = require('shortid');
 
 const Proyectos = db.define('proyectos', {
     id : {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER(11),
         primaryKey: true,
         autoIncrement: true
     }, 
-    nombre :  Sequelize.STRING(100),
-    url : Sequelize.STRING(100)
+    nombre :  DataTypes.STRING(100),
+    url : DataTypes.STRING(100)
 }, {
     hooks: {
         beforeCreate(proyecto) {
