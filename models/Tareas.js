@@ -4,12 +4,12 @@ const Proyectos = require("./Poyectos");
 
 const Tareas = db.define("tareas", {
   id: {
-    type: DataTypes.INTEGER(11),
+    type: DataTypes.INTEGER(),
     primaryKey: true,
     autoIncrement: true,
   },
   tarea: DataTypes.STRING(100),
-  estado: DataTypes.INTEGER(1),
+  estado: DataTypes.INTEGER(),
 });
 // Formas de ralacionar
 Tareas.belongsTo(Proyectos);

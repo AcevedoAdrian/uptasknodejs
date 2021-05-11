@@ -5,6 +5,7 @@ extends layout
 block contenido
     .contenido-principal
         h1 #{nombrePagina} - #{proyecto.nombre}
+        //- form agregar tarea
         form.agregar-tarea(action=`/proyectos/${proyecto.url}` method="POST")
           .campo
             label(for="tarea") Tarea: 
