@@ -1,5 +1,6 @@
 // importamos el modelo
 const Proyectos = require("../models/Poyectos");
+const Tareas = require("../models/Tareas");
 
 exports.proyectosHome = async (req, res) => {
   const proyectos = await Proyectos.findAll();
@@ -71,6 +72,18 @@ exports.proyectoPorUrl = async (req, res, next) => {
     proyectoPromise,
   ]);
 
+  // consultar tareas del proyecto actual
+  const tareas = await Tareas.findAll({
+    where: {
+      proyectoId: proyecto.id,
+    },
+    // para incluir el objeto completo dentro de la consulta
+    // include:[
+    //   {model: Proyectos}
+    // ]
+  });
+  // console.log(tareas); 
+
   // Consultar tareas del Proyecto actual
   if (!proyecto) return next();
   // render a la vista
@@ -78,6 +91,7 @@ exports.proyectoPorUrl = async (req, res, next) => {
     nombrePagina: "Tareas del Proyecto",
     proyecto,
     proyectos,
+    tareas
   });
 };
 

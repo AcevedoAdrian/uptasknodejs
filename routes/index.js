@@ -2,9 +2,7 @@ const express = require("express");
 // Importo las la fx de routa de expres
 const router = express.Router();
 // importar express validator
-const {
-  body
-} = require("express-validator/check");
+const { body } = require("express-validator/check");
 
 //  llamamos a los controladores para pasarle como parametros a las rutas
 const {
@@ -14,11 +12,12 @@ const {
   proyectoPorUrl,
   formularioEditar,
   actualizarProyecto,
-  eliminarProyecto
+  eliminarProyecto,
 } = require("../controllers/proyectoController");
 const {
-  agregarTarea
-} = require("../controllers/tareasControllers")
+  agregarTarea,
+  cambiarEstadosTareas,
+} = require("../controllers/tareasControllers");
 
 module.exports = function () {
   // configuro las rutas con los middelwaress
@@ -46,12 +45,13 @@ module.exports = function () {
   );
 
   // Eliminar un proyecto
-  router.delete('/proyectos/:url', eliminarProyecto )
+  router.delete("/proyectos/:url", eliminarProyecto);
 
+  // Tareas
+  router.post("/proyectos/:url", agregarTarea);
 
+  // actualizar porcion del objeto tarea por eso uso patch
+  router.patch("/tareas/:id", cambiarEstadosTareas);
 
-  // Tareas 
-  router.post('/proyectos/:url',agregarTarea)
-   
   return router;
 };

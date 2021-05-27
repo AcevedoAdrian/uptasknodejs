@@ -12,8 +12,22 @@ block contenido
             input.nombre-tarea(type="text" name="tarea" placeholder="Nombre Tarea")
           .campo.enviar 
             input.boton.nueva-tarea(type="submit" value="Agreagr")
-          //- TODO - Listados de pendientes 
-        
+        .listado-pendientes
+            ul
+              tarea.length
+                each  tarea in tareas
+                  li.tarea(data-tarea=tarea.id)
+                    p= tarea.tarea
+                    .acciones
+                      if tarea.estado
+                        i.far.fa-check-circle.completo
+                      else 
+                        i.far.fa-check-circle
+                      i.fas.fa-trash
+                else
+                  p No hay tareas en este proyecto
+
+        //- pre= vardump(tareas)
         //- Acciones que se pueden realizar 
         .contenedor-acciones
             a(href=`/proyecto/editar/${proyecto.id}` class="boton") Editar Proyecto
