@@ -17,6 +17,7 @@ const {
 const {
   agregarTarea,
   cambiarEstadosTareas,
+  eliminarTareas
 } = require("../controllers/tareasControllers");
 
 module.exports = function () {
@@ -52,6 +53,9 @@ module.exports = function () {
 
   // actualizar porcion del objeto tarea por eso uso patch
   router.patch("/tareas/:id", cambiarEstadosTareas);
+
+  // eliminamos una atea
+  router.delete("/tareas/:id", eliminarTareas);
 
   return router;
 };

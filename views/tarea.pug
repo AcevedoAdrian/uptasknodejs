@@ -28,6 +28,13 @@ block contenido
                   p No hay tareas en este proyecto
 
         //- pre= vardump(tareas)
+        //- AVances del Proyecto
+        .avance
+          h2 Avances del Proyecto 
+          #barra-avance.barra-avance
+            #porcentaje.porcentaje
+
+            
         //- Acciones que se pueden realizar 
         .contenedor-acciones
             a(href=`/proyecto/editar/${proyecto.id}` class="boton") Editar Proyecto

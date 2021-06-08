@@ -29,7 +29,7 @@ exports.agregarTarea = async (req, res, next) => {
   // res.send("Enviado");
 };
 
-exports.cambiarEstadosTareas = async (req, res,next) => {
+exports.cambiarEstadosTareas = async (req, res, next) => {
   console.log(req.params);
   const { id } = req.params;
   const tarea = await Tareas.findOne({
@@ -46,7 +46,20 @@ exports.cambiarEstadosTareas = async (req, res,next) => {
 
   // Con esto guado en la base de datos los cambio que realice en ese momento
   const respuesta = await tarea.save();
-  if(!respuesta) return next()
+  if (!respuesta) return next();
 
   res.status(200).send("todo ok");
+};
+
+// Elimina una tarea seleccionada
+exports.eliminarTareas = async (req, res, next) => {
+  // query toma el nombre que pasamos por params desde axios 
+  // params toma el parametro con el nombre que lo definimos en el router
+  // console.log(req.query);
+  const {id} = req.params;
+
+  // ELiminando con el orm con destroy
+  const resultado = await Tareas.destroy({where:{ id}});
+  if(!resultado )return next();
+  res.status(200).send('Tarea eliminada correctamente');
 };
